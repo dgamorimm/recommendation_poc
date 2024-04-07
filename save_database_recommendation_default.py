@@ -4,6 +4,12 @@ import json
 
 df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
 
+# Set the maximum string length to display without truncation
+pl.Config.set_fmt_str_lengths(900)
+
+# Set the maximum table width in characters
+pl.Config.set_tbl_width_chars(900)
+
 # print(df_voucher)
 print('')
 
@@ -37,10 +43,10 @@ for shopping in shopping_list:
     vouchers_list = json.dumps(df_top_10['name'].to_list())
     df_transform = pl.DataFrame({'shoppings' : unique_shopping_list, 'vouchers_recommendation' : vouchers_list})
     df_new.vstack(df_transform, in_place=True)  # vai concatenado os dfs
-
+   
 print(df_new)
 
 
-print(df_group_by_top_10_shoppings)
-
-# result.write_parquet('datasets/reduce/output/voucher.parquet')
+uri = "sqlite:////home/dgamorim/development/recomendation_poc/database/recommendation.db?charset=utf8"
+table_name = "recommendation_default"
+df_new.write_database(table_name=table_name, connection=uri, if_table_exists='append')

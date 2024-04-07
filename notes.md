@@ -1,11 +1,27 @@
-1 - _Para cada voucher, calcular a quantidade por membros que usaram (criar a base)_
-2 - _Para cada membro, calcular todos os vouchers quantitativamente (criar a base)_
-3 - _Calcular a simiaridade do para o item 1 d alista_
-4 - Recomendar com os dados do item 2 passando o member_id
+> TODOs
+1 - Para cada voucher, calcular a quantidade por membros que usaram (criar a base) ✅
+2 - Para cada membro, calcular todos os vouchers quantitativamente (criar a base) ✅
+3 - Calcular a simiaridade do para o item da lista ✅
+4 - Recomendar os itens para um membro  ✅
+5 - Criar uma API assíncrona que possa fornecer o resultado  ✅
 5 - Tenho que confrontar com o saldo
 6 - Tenho que confrontar e ver se o beneficio esta ativo
 
-> Lógica de aplicabilidade
+> Ordem de execução dos arquivos
+
+1. create_talbles.py
+2. gen_base_voucher.py
+3. gen_base_members.py
+4. gen_base_voucher_transform.py
+5. gen_base_members_transform.py
+6. gen_base_similarity.py
+7. save_database_recommendation.py
+8. save_database_recommendation_default.py
+9. main.py
+
+OBS.: o arquivo recommendation.py é para teste unitário de recomendação de um único membro
+
+> Lógica & Aplicabilidade
 
 - SIMILARIDADE
 1. Primeiro ele pega um beneficio
@@ -30,8 +46,9 @@
 - Quanto mais próximo de 0, mais similaridade.
 - Quanto mais próximo de 1, mais distância ou dissimilaridade.
 
-
-
-
-
-
+> Membros de teste
+- 0lM5f000001SKWqEAO
+- 0lM5f000001LkxcEAC
+- 0lM5f000000lDujEAE
+- 0lM5f000001ASnFEAW
+- 0lM5f000001RLluEAG
