@@ -1,7 +1,8 @@
 from rich import print
 import polars as pl
 
-df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+# df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+df_voucher = pl.read_parquet('datasets\\input\\base_voucher.parquet')  #windows
 
 print(df_voucher)
 print('')
@@ -25,5 +26,6 @@ result = df_ssu.group_by(['member_id', 'name']).agg(
 
 print(result)
 
-result.write_parquet('datasets/reduce/output/member.parquet')
+# result.write_parquet('datasets/reduce/output/member.parquet')
+result.write_parquet('datasets\\reduce\\output\\member.parquet') # windows
 # 0lM5f000001AKDdEAO

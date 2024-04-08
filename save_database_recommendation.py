@@ -5,13 +5,16 @@ import polars as pl
 import json
 
 if __name__ == '__main__':
-    similars_bytes = open('datasets/reduce/output/similars.json')
-    members_bytes = open('datasets/reduce/output/member_transform.json')
+    # similars_bytes = open('datasets/reduce/output/similars.json')
+    similars_bytes = open('datasets\\reduce\\output\\similars.json')  #windows
+    # members_bytes = open('datasets/reduce/output/member_transform.json')
+    members_bytes = open('datasets\\reduce\\output\\member_transform.json')  #windows
     
     similar =  json.load(similars_bytes)
     members =  json.load(members_bytes)
     
-    df = pl.read_parquet('datasets/reduce/output/member.parquet')
+    # df = pl.read_parquet('datasets/reduce/output/member.parquet')
+    df = pl.read_parquet('datasets\\reduce\\output\\member.parquet')  #windows
     _list = df.to_dicts()
     data = {'members': [], 'vouchers_recommendation' : []}
     id = 0
@@ -31,7 +34,8 @@ if __name__ == '__main__':
     df = pl.DataFrame(data)
     print(df)
     
-    uri = "sqlite:////home/dgamorim/development/recomendation_poc/database/recommendation.db?charset=utf8"
+    # uri = "sqlite:////home/dgamorim/development/recomendation_poc/database/recommendation.db?charset=utf8"
+    uri = f'sqlite:///C:/Users/dpinheiro/development/recommendation_poc/database/recommendation.db' # windows
     table_name = "recommendation"
 
     df.write_database(table_name=table_name, connection=uri, if_table_exists='append')

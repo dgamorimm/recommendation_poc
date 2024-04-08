@@ -50,8 +50,10 @@ def get_recommendation_item(data : dict, similar_list : list[dict], user_id : An
     return rankings
 
 if __name__ == '__main__':
-    similars_bytes = open('datasets/reduce/output/similars.json')
-    members_bytes = open('datasets/reduce/output/member_transform.json')
+    # similars_bytes = open('datasets/reduce/output/similars.json')
+    similars_bytes = open('datasets\\reduce\\output\\similars.json')  #windows
+    # members_bytes = open('datasets/reduce/output/member_transform.json')
+    members_bytes = open('datasets\\reduce\\output\\member_transform.json')  #windows
     
     similar =  json.load(similars_bytes)
     members =  json.load(members_bytes)

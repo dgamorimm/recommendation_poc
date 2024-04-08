@@ -68,10 +68,12 @@ def calculate_similar_items(data: dict) -> list[dict]:
 
 if __name__ == '__main__':
     # qty_vouchers = json.load(open('datasets/output/voucher_transform.json'))
-    qty_vouchers = json.load(open('datasets/reduce/output/voucher_transform.json'))
+    # qty_vouchers = json.load(open('datasets/reduce/output/voucher_transform.json'))
+    qty_vouchers = json.load(open('datasets\\reduce\\output\\voucher_transform.json'))  #windows
     # esse processo aqui pode ser demorado, portanto, devemos ter uma base pré calculada e o custo pode ser alto
     data = calculate_similar_items(qty_vouchers)
     
-    with open("datasets/reduce/output/similars.json", "w") as outfile:
+    # with open("datasets/reduce/output/similars.json", "w") as outfile:
+    with open("datasets\\reduce\\output\\similars.json", "w") as outfile:  #windows
         json.dump(data, outfile)
         

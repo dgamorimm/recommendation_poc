@@ -17,7 +17,7 @@ import polars as pl
 router = APIRouter()
 
 @router.get('/{member_id}', response_model=RecommendationSchema,status_code=status.HTTP_200_OK)
-async def get_curso(member_id:str, db: AsyncSession = Depends(get_session)):
+async def get_recommendation(member_id:str, db: AsyncSession = Depends(get_session)):
     async with db as session:
         query = select(RecommendationModel).where(RecommendationModel.members == member_id)
     
@@ -29,7 +29,8 @@ async def get_curso(member_id:str, db: AsyncSession = Depends(get_session)):
         except:
             member = []
         
-        df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+        # df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+        df_voucher = pl.read_parquet('datasets\\input\\base_voucher.parquet')  #windows
         df_member_default = df_voucher.filter(pl.col('member_id') == member_id)
         try:
             shopping =  df_member_default['shopping'].unique().to_list()[0]

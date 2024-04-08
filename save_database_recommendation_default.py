@@ -2,13 +2,14 @@ from rich import print
 import polars as pl
 import json
 
-df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+# df_voucher = pl.read_parquet('datasets/input/base_voucher.parquet')
+df_voucher = pl.read_parquet('datasets\\input\\base_voucher.parquet')  #windows
 
 # Set the maximum string length to display without truncation
-pl.Config.set_fmt_str_lengths(900)
+# pl.Config.set_fmt_str_lengths(900)
 
-# Set the maximum table width in characters
-pl.Config.set_tbl_width_chars(900)
+# # Set the maximum table width in characters
+# pl.Config.set_tbl_width_chars(900)
 
 # print(df_voucher)
 print('')
@@ -47,6 +48,7 @@ for shopping in shopping_list:
 print(df_new)
 
 
-uri = "sqlite:////home/dgamorim/development/recomendation_poc/database/recommendation.db?charset=utf8"
+# uri = "sqlite:////home/dgamorim/development/recomendation_poc/database/recommendation.db?charset=utf8"
+uri = f'sqlite:///C:/Users/dpinheiro/development/recommendation_poc/database/recommendation.db' # windows
 table_name = "recommendation_default"
 df_new.write_database(table_name=table_name, connection=uri, if_table_exists='append')

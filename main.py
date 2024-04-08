@@ -3,7 +3,10 @@ from fastapi import FastAPI
 from core.configs import settings
 from api.v1.api import api_router
 
-app = FastAPI(title='Recommendations API - Multiplan 🔥')
+app = FastAPI(
+    title='Recommendations API - Multiplan 🔥',
+    description='Essa API tem a finalidade de recomendar beneficios por membro',
+    version='1.0.0')
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 # /api/v1/
